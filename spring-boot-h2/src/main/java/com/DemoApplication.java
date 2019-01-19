@@ -8,7 +8,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication
-@ComponentScan(basePackages="com.example.controller,com.example.service.impl,com.example.repository,com.example.entity")
+@ComponentScan(basePackages="com.example")
 public class DemoApplication {
 
 	public static void main(String[] args) {

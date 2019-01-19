@@ -16,55 +16,18 @@ import org.springframework.stereotype.Service;
 import com.example.entity.Employee;
 import com.example.entity.Operators;
 import com.example.repository.EmployeeRepository;
+import com.example.repository.OperatorRepository;
 import com.google.common.io.FileWriteMode;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService {
+public class OperatorServiceImpl implements OperatorService {
 	@Autowired
-	private EmployeeRepository employeeRepository;
-
-	public void setEmployeeRepository(EmployeeRepository employeeRepository) {
-		this.employeeRepository = employeeRepository;
-	}
-
-	public List<Employee> retrieveEmployees() {
-		List<Employee> employees = employeeRepository.findAll();
-		return employees;
-	}
-
-	public Employee getEmployee(Long employeeId) {
-		Optional<Employee> optEmp = employeeRepository.findById(employeeId);
-		return optEmp.get();
-	}
-
-	public void saveEmployee(Employee employee) {
-		employeeRepository.save(employee);
-	}
-
-	public void deleteEmployee(Long employeeId) {
-		employeeRepository.deleteById(employeeId);
-	}
-
-	public void updateEmployee(Employee employee) {
-		employeeRepository.save(employee);
-	}
+	private OperatorRepository operatorRepository;
 
 	@Override
-	public void initOperators() throws IOException {
-		// open file input stream
-		BufferedReader reader = new BufferedReader(new FileReader("notes.txt"));
-
-		String line = null;
-		Scanner scanner = null;
-		int index = 0;
-		while ((line = reader.readLine()) != null) {
-			scanner = new Scanner(line);
-			scanner.useDelimiter(",");
-			while (scanner.hasNext()) {
-				String data = scanner.next();
-				System.out.println(data);
-			}
-		}
+	public void initCSV() {
+		writeCSV();
+		readCSV();
 	}
 
 	private void readCSV() {
@@ -82,12 +45,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 			BufferedReader fileReader = new BufferedReader(new FileReader("operators.csv"));
 			fileReader.readLine();
 			while ((line = fileReader.readLine()) != null) {
+				System.out.println(line);
 				String[] token = line.split(",");
 				Operators operators = new Operators(token[indexName], token[indexLowestPrice], token[indexRating],
 						token[indexMaxSpeed], token[indexDescription], token[indexContactNo], token[indexEmail],
 						token[indexImage], token[indexUrl]);
+				operatorRepository.save(operators);
 				
-				;
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -165,9 +129,4 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
-	@Override
-	public void initCSV() {
-		writeCSV();
-		readCSV();
-	}
 }

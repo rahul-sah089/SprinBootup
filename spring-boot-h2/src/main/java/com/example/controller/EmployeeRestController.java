@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +49,7 @@ public class EmployeeRestController {
 	}
 
 	@PostMapping("/api/employees")
-	public void saveEmployee(@Valid @RequestBody Employee employee) {
+	public void saveEmployee(@Valid Employee employee) {
 		employeeService.saveEmployee(employee);
 		System.out.println("Employee Saved Successfully");
 	}

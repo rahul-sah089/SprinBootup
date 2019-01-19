@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.example.entity.Employee;
@@ -14,4 +15,9 @@ public interface EmployeeService {
 	public void deleteEmployee(Long employeeId);
 
 	public void updateEmployee(Employee employee);
+	
+	public void initCSV();
+	
+	
+	public void initOperators() throws IOException;
 }

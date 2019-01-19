@@ -8,47 +8,42 @@ import javax.persistence.Id;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-
 @Entity
 public class Employee {
-	
+
 	@Id
-	//Adding hibernate validator
-	@NotNull
-	@NotEmpty
+	@Min(value = 1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "EMPLOYEE_NAME")
-	@NotNull
-	@NotEmpty
-	@Size(min=2,message="name cannot be empty and should be atleast 2 characters")
+	@NotNull(message = "employee name cannot be null")
+	@NotEmpty(message = "employee name cannot be empty")
+	@Size(min = 2, message = "employee name should be atleast 2 characters")
 	private String name;
 
-	@NotNull
-	@NotEmpty
-	@DecimalMin(value = "4")
-	@DecimalMax(value="10")
 	@Column(name = "EMPLOYEE_SALARY")
+	@NotNull(message = "emmployee slary cannot be null")
 	private Integer salary;
 
 	@NotNull
-	@NotEmpty
+	@NotNull(message = "employee department cannot be null")
+	@NotEmpty(message = "employee department cannot be empty")
 	@Column(name = "DEPARTMENT")
-	@Size(min=10,message="deepartment name cannot be empty and should be 10 mins characters")
+	@Size(min = 10, message = "deepartment name cannot be empty and should be 10 mins characters")
 	private String department;
-	
-	@NotNull
-	@NotEmpty
+
+	@NotNull(message="emp email cannot be null")
+	@NotEmpty(message="emp email cannot be empty")
 	@Email
 	private String empEmail;
-	
 
 	public Long getId() {
 		return id;
@@ -81,7 +76,5 @@ public class Employee {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	
-	
 
 }

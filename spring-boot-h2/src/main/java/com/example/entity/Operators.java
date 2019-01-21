@@ -101,6 +101,10 @@ public class Operators {
 	private String image;
 	private String url;
 
+	public Operators() {
+
+	}
+
 	public Operators(String name, String lowestPrice, String rating, String maxSpeed, String description,
 			String contactNo, String email, String image, String url) {
 		super();
@@ -113,6 +117,20 @@ public class Operators {
 		this.email = email;
 		this.image = image;
 		this.url = url;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

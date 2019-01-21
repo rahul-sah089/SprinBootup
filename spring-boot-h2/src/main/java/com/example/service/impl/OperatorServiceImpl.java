@@ -3,21 +3,14 @@ package com.example.service.impl;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+
+import com.example.entity.Operators;
+import com.example.repository.OperatorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.ast.Operator;
 import org.springframework.stereotype.Service;
-
-import com.example.entity.Employee;
-import com.example.entity.Operators;
-import com.example.repository.EmployeeRepository;
-import com.example.repository.OperatorRepository;
-import com.google.common.io.FileWriteMode;
 
 @Service
 public class OperatorServiceImpl implements OperatorService {
@@ -29,6 +22,13 @@ public class OperatorServiceImpl implements OperatorService {
 		writeCSV();
 		readCSV();
 	}
+
+	@Override
+	public List<Operators> getAllOperators(){
+		return operatorRepository.findAll();
+	}
+
+
 
 	private void readCSV() {
 		String line = "";

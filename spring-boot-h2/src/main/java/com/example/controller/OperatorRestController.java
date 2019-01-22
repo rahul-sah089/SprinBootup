@@ -37,17 +37,17 @@ public class OperatorRestController {
 		return operatorService.getAllOperators();
 	}
 
-	@GetMapping(value = "/operator/{operatorId}")
+	@GetMapping(value = "/operators/{operatorId}")
 	public Operators getOperatorById(@PathVariable(name = "operatorId") Long operatorId) {
 		return operatorService.getOperator(operatorId);
 	}
 
-	@PostMapping(value = "/operator")
+	@PostMapping(value = "/operators")
 	public Operators postMethodName(@RequestBody Operators operators) {
 		return operatorService.saveOperator(operators);
 	}
 
-	@DeleteMapping(value = "/operator/{operatorId}")
+	@DeleteMapping(value = "/operators/{operatorId}")
 	public void deleteOperators(@PathVariable(name = "operatorId") Long operatorId) {
 		operatorService.deleteEmployee(operatorId);
 	}

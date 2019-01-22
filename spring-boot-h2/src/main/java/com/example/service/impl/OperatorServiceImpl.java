@@ -26,7 +26,7 @@ public class OperatorServiceImpl implements OperatorService {
 	}
 
 	@Override
-	public List<Operators> getAllOperators(){
+	public List<Operators> getAllOperators() {
 		return operatorRepository.findAll();
 	}
 
@@ -51,8 +51,6 @@ public class OperatorServiceImpl implements OperatorService {
 		return operatorRepository.save(operators);
 	}
 
-
-
 	private void readCSV() {
 		String line = "";
 		Integer indexName = 0;
@@ -74,7 +72,7 @@ public class OperatorServiceImpl implements OperatorService {
 						token[indexMaxSpeed], token[indexDescription], token[indexContactNo], token[indexEmail],
 						token[indexImage], token[indexUrl]);
 				operatorRepository.save(operators);
-				
+
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -89,15 +87,16 @@ public class OperatorServiceImpl implements OperatorService {
 		// String contactNo, String email, String image, String url
 		List<Operators> operators = Arrays.asList(
 				new Operators("airtel", "120", "5", "10Mbps", "Airtel India Wiki Page Informations", "+910910910901",
-						"airtel.india@airtel.com", "image", "url"),
-				new Operators("airtel", "120", "5", "10Mbps", "Airtel India Wiki Page Informations", "+910910910901",
-						"airtel.india@airtel.com", "image", "url"),
-				new Operators("airtel", "120", "5", "10Mbps", "Airtel India Wiki Page Informations", "+910910910901",
-						"airtel.india@airtel.com", "image", "url"),
-				new Operators("airtel", "120", "5", "10Mbps", "Airtel India Wiki Page Informations", "+910910910901",
-						"airtel.india@airtel.com", "image", "url"),
-				new Operators("airtel", "120", "5", "10Mbps", "Airtel India Wiki Page Informations", "+910910910901",
-						"airtel.india@airtel.com", "image", "url"));
+						"airtel.india@airtel.com",
+						"https://pbs.twimg.com/profile_images/644805995705692160/hByAwFLY_400x400.png", "url"),
+				new Operators("vodafone", "120", "5", "10Mbps", "Airtel India Wiki Page Informations", "+910910910901",
+						"airtel.india@airtel.com",
+						"https://akm-img-a-in.tosshub.com/indiatoday/images/story/201701/vodafonelogo-559_010617085418.jpg",
+						"url"),
+				new Operators("reliance jio", "120", "5", "10Mbps", "Airtel India Wiki Page Informations", "+910910910901",
+						"airtel.india@airtel.com",
+						"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/TOSHIBA_Logo.png/320px-TOSHIBA_Logo.png",
+						"url"));
 
 		FileWriter fileWriter = null;
 		try {
